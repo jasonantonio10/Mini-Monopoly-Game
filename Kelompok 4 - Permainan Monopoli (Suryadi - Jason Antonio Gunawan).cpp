@@ -14,11 +14,6 @@ int uang_y;
 int uang_z;
 
 
-/*struct urutan_user{
-	int urutan_x, urutan_y, urutan_z;
-};/*
-typedef struct urutan_user Struct;
-*/
 void delay(int num)
 {
     // Converting time into milli_seconds
@@ -41,16 +36,7 @@ int urutan_user()
 		rand_num = rand()%3 + 1;
 	}
 
-	/*switch(rand_num){
-		case 0:
-			return 1;
-			break;
-		case 1:
-			return 2;
-			break;
-		default:
-			return 3;
-			break;*/	
+		
 
 }
 
@@ -360,10 +346,10 @@ void dana_umum(char id_user){
 				break;
 			}	 
 	}
-	//nambah ato kurang di duit file
+	
 }
 int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){
-	//printf("Pemain %c akan menerima kartu kesempatan untuk:\n1. Maju 1 langkah\n2. Mundur 1 langkah\n3. Maju 2 langkah\n4. Mundur 2 langkah\n\n",id_user);
+
 	int rand_num;
 		srand(time(0)); 
 		rand_num = rand()%4 + 1;
@@ -427,7 +413,7 @@ int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){
 					return locationz;
 					break;
 				}
-				//print lokasi user
+				
 			case 4:
 				if(id_user=='x'){
 					locationx-=2;
@@ -449,6 +435,42 @@ int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){
 				}
 		}
 	}
+
+void panduan(int pilihan){
+	printf("=================================================Selamat Datang di Buku Panduan Permainan====================================================\n");
+	printf("1. Permainan Monopoly ini dapat dimainkan oleh 3 player\n");
+	printf("2. Player 1 diberi nama x, player 2 diberi nama y, player 3 diberi nama z\n");
+	printf("3. Permainan game monopoly ini akan merandom urutan setiap player\n");
+	printf("4. Permainan game monopoly akan memulai giliran setiap player jalan sesuai dengan urutan player yang di random\n");
+	printf("5. Setiap giliran, player akan merandom lemparan dadu dan jalan sesuai dengan angka random dadu\n");
+	printf("6. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak START, Dana Umum, & Kartu Kesempatan\n");
+	printf("7. Setiap player melewati start maka uang player akan bertambah sebanyak 50\n");
+	printf("8. Player yang berada di tempat dana umum memiliki chance untuk bertambah atau berkurang uang sebesar 100 atau 200\n");
+	printf("9. Player yang berada di tempat kartu kesempatan memiliki chance untuk maju atau mundur langkah sebesar 1 atau 2 petak\n");
+	printf("10. Apabila player menempati petak yang sudah dibeli player lain maka player akan dikenakan pajak sebesar 100 dan player yang memiliki\n    properti tersebut akan mendapatkan uang 100\n");
+	printf("11. Permainan akan berakhir apabila salah satu player sudah memiliki uang <= 0\n");
+	printf("12. Player yang memiliki uang <= 0 akan menjadi juara 3, player yang memiliki paling banyak akan menjadi juara 1 player yang memiliki uang\n    ke-2 terbanyak akan menjadi juara 2\n");
+	printf("13. Apabila ada kedua player yang memiliki uang yang sama, maka akan dibandingkan dari segi jumlah properti dan yang memiliki\n    properti lebih banyak dinyatakan menang\n\n");
+	delay(4000);
+	printf("Apakah anda ingin kembali ke menu utama?\n1. Ya\n2. Tidak\n");
+	scanf("%d",&kembali);
+	if(kembali==1){
+	     system("cls");
+	     return main();
+	}
+	else if (kembali==2){
+	     clock_t start_time = clock();
+	     while (clock() < start_time + 30000){
+		delay(2000);
+		printf(">");
+	     }
+	     printf("\n");
+	     printf("30 detik sudah berlalu, Anda akan kembali ke menu utama");
+	     delay(1500);
+	     system("cls");
+	     return main();
+	}
+	
 
 int main(){
 	fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","w");
@@ -503,56 +525,25 @@ int main(){
 	scanf("%d",&pilihan);
 	
 	switch(pilihan){
-		case 1:
-			system("cls");
-			printf("=================================================Selamat Datang di Buku Panduan Permainan====================================================\n");
-			printf("1. Permainan Monopoly ini dapat dimainkan oleh 3 player\n");
-			printf("2. Player 1 diberi nama x, player 2 diberi nama y, player 3 diberi nama z\n");
-			printf("3. Permainan game monopoly ini akan merandom urutan setiap player\n");
-			printf("4. Permainan game monopoly akan memulai giliran setiap player jalan sesuai dengan urutan player yang di random\n");
-			printf("5. Setiap giliran, player akan merandom lemparan dadu dan jalan sesuai dengan angka random dadu\n");
-			printf("6. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak START, Dana Umum, & Kartu Kesempatan\n");
-			printf("7. Setiap player melewati start maka uang player akan bertambah sebanyak 50\n");
-			printf("8. Player yang berada di tempat dana umum memiliki chance untuk bertambah atau berkurang uang sebesar 100 atau 200\n");
-			printf("9. Player yang berada di tempat kartu kesempatan memiliki chance untuk maju atau mundur langkah sebesar 1 atau 2 petak\n");
-			printf("10. Apabila player menempati petak yang sudah dibeli player lain maka player akan dikenakan pajak sebesar 100 dan player yang memiliki\n    properti tersebut akan mendapatkan uang 100\n");
-			printf("11. Permainan akan berakhir apabila salah satu player sudah memiliki uang <= 0\n");
-			printf("12. Player yang memiliki uang <= 0 akan menjadi juara 3, player yang memiliki paling banyak akan menjadi juara 1 player yang memiliki uang\n    ke-2 terbanyak akan menjadi juara 2\n");
-			printf("13. Apabila ada kedua player yang memiliki uang yang sama, maka akan dibandingkan dari segi jumlah properti dan yang memiliki\n    properti lebih banyak dinyatakan menang\n\n");
-			delay(4000);
-			printf("Apakah anda ingin kembali ke menu utama?\n1. Ya\n2. Tidak\n");
-			scanf("%d",&kembali);
-			if(kembali==1){
-				system("cls");
-				return main();
-			}
-			else if (kembali==2){
-				 clock_t start_time = clock();
-				 while (clock() < start_time + 30000){
-				 	delay(2000);
-				 	printf(">");
-				 }
-				 printf("\n");
-				 printf("30 detik sudah berlalu, Anda akan kembali ke menu utama");
-				 delay(1500);
-				 system("cls");
-				 return main();
-			}
-			break;
+	case 1:
+		system("cls");
+		panduan(pilihan);
+		break;
 			
-		case 2:
-			system("cls");
-			printf("Selamat datang di permainan Monopoli!\n\n");
-			turnx = urutan_user();
-			turny = urutan_user();
-			turnz = urutan_user();
-			while(turny==turnx){
-			turny = urutan_user();
-			while(turnz==turny){
-			turnz = urutan_user();
-			}
-			}
-				printf("Urutan Giliran Main Player\n");
+	case 2:
+			
+	system("cls");
+	printf("Selamat datang di permainan Monopoli!\n\n");
+	turnx = urutan_user();
+	turny = urutan_user();
+	turnz = urutan_user();
+	while(turny==turnx){
+	    turny = urutan_user();
+	    while(turnz==turny){
+		turnz = urutan_user();
+	    }
+	}
+	printf("Urutan Giliran Main Player\n");
 	printf("Player x = %d\n",turnx);
 	printf("Player y = %d\n",turny);
 	printf("Player z = %d\n",turnz);
@@ -603,7 +594,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_x);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationx]=='z'){
 				printf("Anda dikenakan pajak sebesar milik z 100\n");
@@ -672,7 +663,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_y);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationy]=='z'){
 				printf("Anda dikenakan pajak milik z sebesar 100\n");
@@ -739,7 +730,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_z);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationz]=='y'){
 				printf("Anda dikenakan pajak petak milik y sebesar 100\n");
@@ -811,7 +802,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_z);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationz]=='y'){
 				printf("Anda dikenakan pajak petak milik y sebesar 100\n");
@@ -878,7 +869,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_y);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationy]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -951,7 +942,7 @@ int main(){
 				printf("Uang anda tersisa: %d\n",uang_y);
 				printf("Uang x menjadi: %d\n",uang_x);
 				
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationy]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -1020,7 +1011,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_x);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationx]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -1086,7 +1077,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_z);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationz]=='x'){
 				printf("Anda dikenakan pajak petak milik x sebesar 100\n");
@@ -1158,7 +1149,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_z);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationz]=='x'){
 				printf("Anda dikenakan pajak milik petak x sebesar 100\n");
@@ -1225,7 +1216,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_x);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationx]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -1295,7 +1286,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_z);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationz]=='x'){
 				printf("Anda dikenakan pajak milik petak x sebesar 100\n");
@@ -1364,7 +1355,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_y);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationy]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -1432,7 +1423,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_x);
 				printf("Uang y menjadi: %d\n",uang_y);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationx]=='z'){
 				printf("Anda dikenakan pajak petak milik z sebesar 100\n");
@@ -1503,7 +1494,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_x);
 				printf("Uang z menjadi: %d\n",uang_z);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationx]=='y'){
 				printf("Anda dikenakan pajak petak milik y sebesar 100\n");
@@ -1570,7 +1561,7 @@ int main(){
 				printf("\n");
 				printf("Uang anda tersisa: %d\n",uang_y);
 				printf("Uang x menjadi: %d\n",uang_x);
-				//ngurang duit 100
+				
 			}
 			if(pemilik[locationy]=='z'){
 				printf("Anda dikenakan pajak milik petak z sebesar 100\n");
@@ -1602,26 +1593,13 @@ int main(){
 	    	printf("\n\n");
 	    	break;
 		}
-	    //fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","r");
-		//fscanf(fp1,"%d",&uang_x);
-	    //fp2 = fopen("C:\\Users\\Asus\\Desktop\\uang_y.txt","r");
-		//fscanf(fp2,"%d",&uang_y);
-		//fp3 = fopen("C:\\Users\\Asus\\Desktop\\uang_z.txt","r");
-		//fscanf(fp3,"%d",&uang_z);
-		
-		
-		//fclose(fp1);
-		//fclose(fp2);
-		//fclose(fp3);
-	    //ngecek duit setiap pemain sebelum giliran berikutnya
-	    //kalo dah ada yg 0 break while
-	    //print siapa yang menang (duit paling banyak), siapa rank 1 2 3
+	    
 	}
 
 	
 	  
 	
-	//system("cls");
+	
 	if(uang_x<=0 && uang_y<=0){
 		for(i=0;i<20;i++){
 					if(pemilik[i]=='y'){
