@@ -1,4 +1,4 @@
-# Monopoly-game-program-guide
+# Program Game Mini Monopoly
 
 Proyek Algoritma & Pemrograman (Monopoly)
 Nama Kelompok : Suryadi
