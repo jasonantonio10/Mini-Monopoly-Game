@@ -20,18 +20,20 @@ Panduan Permainan Game Monopoly
 
 5. Setiap giliran player akan merandom lemparan dadu dan jalan sesuai dengan angka random dadu
 
-6. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak "start","Dana Umum","Kartu Kesempatan"
+6. Setiap player diberikan uang modal awal sebesar 500 yang akan disimpan(di-write) di 3 buah file untuk masing-masing player, dan terus    menerus di-update jika terjadi penambahan/pengurangan uang pemain.
 
-7. Setiap player melewati start maka uang player akan bertambah sebanyak 50
+7. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak "start","Dana Umum","Kartu Kesempatan"
 
-8. Player yang berada di tempat dana umum memiliki chance untuk bertambah atau berkurang uang sebesar 100 atau 200
+8. Setiap player melewati start maka uang player akan bertambah sebanyak 50
 
-9. Player yang berada di tempat kartu kesempatan memiliki chance untuk maju atau mundur langkah sebesar 1 atau 2 petak
+9. Player yang berada di tempat dana umum memiliki chance untuk bertambah atau berkurang uang sebesar 100 atau 200
 
-10. Apabila player menempati petak yang sudah dibeli player lain maka player akan dikenakan pajak sebesar 100 dan player yang memiliki       properti tersebut akan mendapatkan uang 100
+10. Player yang berada di tempat kartu kesempatan memiliki chance untuk maju atau mundur langkah sebesar 1 atau 2 petak
 
-11. Permainan akan berakhir apabila salah satu player sudah memiliki uang <= 0
+11. Apabila player menempati petak yang sudah dibeli player lain maka player akan dikenakan pajak sebesar 100 dan player yang memiliki       properti tersebut akan mendapatkan uang 100
 
-12. Player yang memiliki uang <= 0 akan menjadi juara 3 dan player yang memiliki uang lebih banyak akan menjadi juara 1 dan player yang     memiliki uang lebih sedikit akan menjadi juara 2
+12. Permainan akan berakhir apabila salah satu player sudah memiliki uang <= 0
 
-13. Apabila ada kedua player yang memiliki Uang yang sama maka akan membandingkan berapa banyak jumlah properti yang dimiliki dan yang       memiliki properti lebih banyak menang
+13. Player yang memiliki uang <= 0 akan menjadi juara 3 dan player yang memiliki uang lebih banyak akan menjadi juara 1 dan player yang     memiliki uang lebih sedikit akan menjadi juara 2
+
+14. Apabila ada kedua player yang memiliki Uang yang sama maka akan membandingkan berapa banyak jumlah properti yang dimiliki dan yang       memiliki properti lebih banyak menang
