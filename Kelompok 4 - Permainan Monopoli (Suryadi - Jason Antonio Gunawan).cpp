@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-const char* petak[] = {"START","Indonesia","Singapore","Hongkong","Taiwan","Dana Umum","Turki","Brunei","Australia","Filipina","Jepang","Kartu Kesempatan","Korea","Rusia","Amerika Serikat","Inggris","Irlandia","Wales","Mesir","Skotlandia","START","Indonesia","Singapore","Hongkong","Taiwan","Dana Umum"};
+const char* petak[] = {"START","Indonesia","Singapore","Hongkong","Taiwan","Dana Umum","Turki","Brunei","Australia","Filipina","Jepang","Kartu Kesempatan","Korea","Rusia","Amerika Serikat","Inggris","Irlandia","Wales","Mesir","Skotlandia","START","Indonesia","Singapore","Hongkong","Taiwan","Dana Umum"}; //Array untuk menyimpan setiap petak yang ada di permainan ini
 
-char pemilik[] = {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
-FILE * fp1;
+char pemilik[] = {' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};//Array untuk menyimpan pemain (x,y atau z) sesuai dengan petak yang telah dimiliki
+FILE * fp1; //Inisialisasi penggunaan file untuk menyimpan uang masing-masing pemain
 FILE * fp2;
 FILE * fp3;
 int panduan(int pilihan);
@@ -14,7 +14,7 @@ int uang_y;
 int uang_z;
 
 
-void delay(int num)
+void delay(int num) //Fungsi untuk menerapkan efek delay, dengan mengambil waktu sistem dan menyimpannya di variabel start_time sampai selisi antara waktu sistem sekarang dengan start_time sesuai yang dimasukkan user.
 {
     // Converting time into milli_seconds
     int milli_seconds = num;
@@ -26,7 +26,7 @@ void delay(int num)
     while (clock() < start_time + milli_seconds) ;
 }
 
-int urutan_user()
+int urutan_user()//Melakukan randomizing untuk menentukan urutan giliran pemain
 {
 	int rand_num,i;
 	int urutan[3];
@@ -40,7 +40,7 @@ int urutan_user()
 
 }
 
-int dadu() 
+int dadu() //Menghasilkan angka random yang akan dijadikan penentu langkah masing-masing pemain
 {
 	int rand_num;
 	srand(time(0)); 
@@ -48,7 +48,7 @@ int dadu()
 	return rand_num;
 }
 
-const char* monopoli_jalan (int move,int turn_no,int locationx,int locationy,int locationz)
+const char* monopoli_jalan (int move,int turn_no,int locationx,int locationy,int locationz) //Fungsi yang akan seolah-olah menggerakkan/memindahkan posisi pemain tergantung dari hasil lemparan dadu
 {
 	int i;
 	char a[30]={' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '};
@@ -121,7 +121,7 @@ const char* monopoli_jalan (int move,int turn_no,int locationx,int locationy,int
 
 
 
-void negara(int beli,int location,char id_user ){
+void negara(int beli,int location,char id_user ){ //Fungsi untuk melakukan transaksi ketika pemain ingin membeli sebuah petak (negara) untuk dijadikan properti miliknya
 	fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","r");
 	fscanf(fp1,"%d",&uang_x);
 	fclose(fp1);
@@ -203,7 +203,7 @@ void negara(int beli,int location,char id_user ){
 	}
 }
 
-void dana_umum(char id_user){
+void dana_umum(char id_user){ //Fungsi untuk handling ketika pemain berada di petak dana umum, apakah akan mendapat pengurangan uang sebanyak 100, penambahan sebesar 100, pengurangan sebesar 200, ataupun penambahan sebesar 200
 	int rand_num;
 	srand(time(0)); 
 	rand_num = rand()%4 + 1;
@@ -348,7 +348,7 @@ void dana_umum(char id_user){
 	}
 	
 }
-int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){
+int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){ //Fungsi untuk handling ketika pemain berada di petak Kartu Kesempatan. Angka random yang dikeluarkan akan menentukan apakah pemain bergerak 1 langkah atau 2 langkah maju ataupun mundur.
 
 	int rand_num;
 		srand(time(0)); 
@@ -439,7 +439,7 @@ int kartu_kesempatan(char id_user,int locationx,int locationy,int locationz){
 
 	
 
-int main(){
+int main(){ //Fungsi utama jalannya program
 	fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","w");
 	fprintf(fp1,"%d",500);
 	fclose(fp1);
@@ -492,19 +492,19 @@ int main(){
 	scanf("%d",&pilihan);
 	
 	switch(pilihan){
-	case 1:
+	case 1: //Masuk ke menu panduan permainan
 		system("cls");
-		panduan(pilihan);
+		panduan(pilihan); //Memanggil fungsi panduan permainan
 		break;
 			
-	case 2:
+	case 2: //Masuk ke permainan monopoli
 			
 	system("cls");
 	printf("Selamat datang di permainan Monopoli!\n\n");
-	turnx = urutan_user();
+	turnx = urutan_user(); //Meyimpan urutan pemain hasil randomizer dari fungsi urutan_user
 	turny = urutan_user();
 	turnz = urutan_user();
-	while(turny==turnx){
+	while(turny==turnx){  //Memastikan masing-masing pemain mendapatkan urutan yang berbeda
 	    turny = urutan_user();
 	    while(turnz==turny){
 		turnz = urutan_user();
@@ -520,13 +520,13 @@ int main(){
 	if (turnx==1)
 	{	printf("\n\n");
 		printf("Lempar Dadu\n");
-		move = dadu();
-    	posisi = monopoli_jalan(move,1,locationx,locationy,locationz);
-    	locationx=locationx+move;
+		move = dadu(); //Mengambil angka yang dihasilkan dadu
+    	posisi = monopoli_jalan(move,1,locationx,locationy,locationz); //Menggerakkan pemain sesuai angka lemparan dadu
+    	locationx=locationx+move; 
     	if(locationx>=20)
     	{
-    	  locationx=locationx-20;
-    	  uang_x+=50;
+    	  locationx=locationx-20; //Handling ketika pemain sudah kembali melewati petak START (Petak ke 20)
+    	  uang_x+=50; //Uang pemain bertambah sebanyak 50 ketika melewati petak START
     	  fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","w");
 		  fprintf(fp1,"%d",uang_x);
 		  fclose(fp1);
@@ -535,18 +535,18 @@ int main(){
 		printf("Jalan %d Langkah\n",move);
 		printf("Lokasi player x %s\n",posisi);
 		getchar();
-		if(posisi!=petak[0] && posisi!=petak[5] && posisi!=petak[11]){
+		if(posisi!=petak[0] && posisi!=petak[5] && posisi!=petak[11]){ //Memeriksa dan memastikan pemain tidak berada di petak START, Dana Umum, ataupun Kartu Kesempatan
 			if(pemilik[locationx]==' '){
 				printf("Apakah x ingin membeli petak %s?\n",posisi);
 				printf("1. Beli\n2. Pass\n");
 				scanf("%d",&keputusan);
-				negara(keputusan,locationx,x);
+				negara(keputusan,locationx,x); //Memanggil fungsi negara untuk melakukan transaksi ataupun pass
 			}
-			if(pemilik[locationx]=='x'){
+			if(pemilik[locationx]=='x'){ //Memeriksa apakah petak yang ditempati pemain sudah dimiliki oleh pemain tersebut
 				printf("Properti %s milik x\n",posisi);
 				
 			}
-			if(pemilik[locationx]=='y'){
+			if(pemilik[locationx]=='y'){ //Memeriksa apakah pemain sedang berada di petak yang telah dibeli/dimiliki pemain lain, dan mengenakan pajak jika benar
 				printf("Anda dikenakan pajak petak milik y sebesar 100\n");
 				fp1 = fopen("C:\\Users\\Asus\\Desktop\\uang_x.txt","r");
 				fscanf(fp1,"%d",&uang_x);
@@ -580,11 +580,11 @@ int main(){
 				printf("Uang z menjadi: %d\n",uang_z);
 			}
 		}
-		if(posisi==petak[5]){
+		if(posisi==petak[5]){//Jika pemain berada di petak Dana Umum, maka akan memanggil fungsi dana_umum
 			dana_umum(x);
 		}
 		if(posisi==petak[11]){
-			locationx = kartu_kesempatan(x,locationx,locationy,locationz);
+			locationx = kartu_kesempatan(x,locationx,locationy,locationz); //Memanggil fungsi kartu_kesempatan jika pemain berada di petak Kartu Kesempatan
 		}
 
 		if (turny==2)
@@ -1555,10 +1555,10 @@ int main(){
 	    }
 		}
 	    
-	    if(uang_x<=0||uang_y<=0||uang_z<=0){
+	    if(uang_x<=0||uang_y<=0||uang_z<=0){ //Memeriksa apakah ada pemain yang uangnya sudah kurang atau sama dengan 0 pada setiap giliran
 	    	//system("cls");
 	    	printf("\n\n");
-	    	break;
+	    	break; //keluar dari loop jika ada pemain yang uangnya sudah kurang dari atau sama dengan 0
 		}
 	    
 	}
@@ -1566,8 +1566,12 @@ int main(){
 	
 	  
 	
-	
-	if(uang_x<=0 && uang_y<=0){
+	/*Menentukan pemenang berdasarkan sisa uang pemain dan kondisi pemain yang mungkin terjadi, seperti ketika ada 2 pemain yang memiliki uang yang sama
+	  Jika ada 2 pemain yang memiliki uang yang sama, peringkat yang lebih tinggi ditentukan melalui jumlah properti yang dimiliki kedua pemain.
+	  Misal: Jika a dan b sama-sama memiliki jumlah uang yang sama sementara c memiliki uang kurang dari/sama dengan 0, maka di antara a dan b dicari yang memiliki
+	  properti lebih banyak untuk dinobatkan sebagai juara 1 (b juara 2, dan c sudah pasti peringkat terakhir).
+	  */
+	if(uang_x<=0 && uang_y<=0){ 
 		for(i=0;i<20;i++){
 					if(pemilik[i]=='y'){
 						count_propertiy+=1;
@@ -1750,19 +1754,19 @@ int main(){
 		main();
 		break;
 	
-	case 3:
+	case 3: //Jika pemain ingin keluar dari program
 		printf("\n");
 		printf("Sampai jumpa kembali!\n");	
-    	delay(1000);
-    	printf(">");
-    	delay(1000);
-    	printf(">");
-    	delay(1000);
-    	printf(">");
+    		delay(1000);
+    		printf(">");
+    		delay(1000);
+    		printf(">");
+    		delay(1000);
+    		printf(">");
 		return 0;
 		break;
 	
-	default:
+	default: //Error handling jika pemain memasukkan angka yang salah (tidak ada di pilihan menu)
 		printf("Silahkan pilih angka yang benar!");
 		delay(1500);
 		system("cls");
@@ -1781,7 +1785,7 @@ int main(){
 
 }
 
-int panduan(int pilihan){
+int panduan(int pilihan){ //Fungsi untuk mencetak panduan permainan
 	int kembali;
 	printf("=================================================Selamat Datang di Buku Panduan Permainan====================================================\n");
 	printf("1. Permainan Monopoly ini dapat dimainkan oleh 3 player\n");
