@@ -12,6 +12,7 @@ Panduan Permainan Game Monopoly
 2.  Player 1 diberi nama x, player 2 diberi nama y, player 3 diberi nama z
 3.  Permainan game monopoly ini akan merandom urutan setiap player
 4.  Permainan game monopoly akan memulai giliran setiap player jalan sesuai dengan urutan player yang di random
+5.  Setiap player diberikan uang modal awal sebesar 500 yang akan disimpan(di-write) di 3 buah file untuk masing-masing player, dan terus     menerus di-update jika terjadi penambahan/pengurangan uang pemain.
 5.  Setiap giliran player akan merandom lemparan dadu dan jalan sesuai dengan angka random dadu
 6.  Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak "start","Dana Umum","Kartu Kesempatan"
 7.  Player melewati start maka uang player akan bertambah sebanyak 50
