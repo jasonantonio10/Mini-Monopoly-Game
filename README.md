@@ -1,6 +1,7 @@
 # Program Game Mini Monopoly
 
 Algorithm and Programming Course mini project (Monopoly game)
+
 Authors: Suryadi
          Jason Antonio 
 
