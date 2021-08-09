@@ -1,9 +1,9 @@
-# Program Game Mini Monopoly
+# Mini Monopoly Game Code
 
 Algorithm and Programming Course mini project (Monopoly game)
 
 Authors: Suryadi
-         Jason Antonio 
+Jason Antonio 
 
 Hal-Hal yang perlu diperhatikan sebelum memainkan game ini 
 1. Perhatikan directory file untuk file penyimpanan uang player (dapat diubah directory file pada compiler)
@@ -20,9 +20,9 @@ Panduan Permainan Game Monopoly
 
 5. Setiap giliran player akan merandom lemparan dadu dan jalan sesuai dengan angka random dadu
 
-6. Setiap player diberikan uang modal awal sebesar 500 yang akan disimpan(di-write) di 3 buah file untuk masing-masing player, dan terus    menerus di-update jika terjadi penambahan/pengurangan uang pemain.
+6. Setiap player diberikan uang modal awal sebesar 500 yang akan disimpan(di-write) di 3 buah file untuk masing-masing player, dan terus menerus di-update jika terjadi penambahan/pengurangan uang pemain.
 
-7. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak "start","Dana Umum","Kartu Kesempatan"
+7. Player yang sudah jalan dan menempati petak dapat membeli petak dengan harga 200 kecuali petak "Start","Dana Umum","Kartu Kesempatan"
 
 8. Setiap player melewati start maka uang player akan bertambah sebanyak 50
 
