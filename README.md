@@ -3,7 +3,8 @@
 Algorithm and Programming Course mini project (Monopoly game)
 
 Authors: Suryadi
-Jason Antonio 
+
+         Jason Antonio 
 
 Hal-Hal yang perlu diperhatikan sebelum memainkan game ini 
 1. Perhatikan directory file untuk file penyimpanan uang player (dapat diubah directory file pada compiler)
